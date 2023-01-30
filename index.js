@@ -26,12 +26,14 @@ app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
 app.use("/api/comment", commentRouter);
 
-app.use("/", express.static("static"));
+// app.use("/", express.static("static"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "static/index.html"));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "static/index.html"));
+// });
+app.get("/", (req, res) => {
+  res.send("Hello Server is working");
 });
-
 const port = process.argv[2] || 3035;
 
 connectDatabase().then(() => {
